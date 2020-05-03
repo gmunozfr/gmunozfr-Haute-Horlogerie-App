@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended : true}))
 app.use(bodyParser.json())//here Json is going to be used
 
 cors(app)// here the app will be called. Is the cors call where we pass the app to the cors file
-// routes(app) //passing the app to the routes
+routes(app) //passing the app to the routes
 
 
 app.listen(port, function(err){
