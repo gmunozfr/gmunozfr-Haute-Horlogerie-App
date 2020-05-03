@@ -7,8 +7,8 @@
 //schema that defines the model which allows to interact with it translating to mongodb a sql code being
 //  able to insert, update, delete.
 
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema//getting access to the schema from mongoose
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;//getting access to the schema from mongoose
 
 var LogEntrySchema = new Schema({ //defining the fiels of this model, is the new mongoose schema
     

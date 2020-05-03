@@ -2,7 +2,6 @@
 // <!-- This is the github account of the author: https://github.com/marktellez/marktellez.github.io/commits/master?after=fd3b6cd992d64bce29136c963b5531b628b42677+34 -->
 // <!-- Another reference in regards to the author is: https://github.com/marktellez/marktellez.github.io -->
 
-
 'use strict'; //this is going to force it into a strict mode
 
 require('dotenv').config() //is going to load a dotenv file
@@ -22,8 +21,6 @@ var cors =  require('./cors')//it handles the security for cross site scripting
 mongoose.Promise = global.Promise //this is the global namespace
 mongoose.connect(process.env.MONGODB_URL);//connecting to Mongodb Atlas without exposing here the user and password against any attacker 
 mongoose.set('useFindAndModify', false);//to get rid of the warning while compiling
-
-
 mongoose.connection.on('error', (err) => { 
     console.log('Mongodb Error: ', err); 
     process.exit();
@@ -38,7 +35,7 @@ app.use(bodyParser.json())//here Json is going to be used
 
 cors(app)// here the app will be called. Is the cors call where we pass the app to the cors file
 routes(app) //passing the app to the routes
-
+//
 
 app.listen(port, function(err){
     console.log("The Fabulous Timepieces App is Listening on Port: " + port)
