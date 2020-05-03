@@ -15,18 +15,18 @@ var cors = require("cors")
 var http = require("http")
 
 
-
 var routes = require('./routes')
 var cors =  require('./cors')//it handles the security for cross site scripting
 
 mongoose.Promise = global.Promise //this is the global namespace
 mongoose.connect(process.env.MONGODB_URL);//connecting to Mongodb Atlas without exposing here the user and password against any attacker 
 mongoose.set('useFindAndModify', false);//to get rid of the warning while compiling
+
+
 mongoose.connection.on('error', (err) => { 
     console.log('Mongodb Error: ', err); 
     process.exit();
 });
-
 mongoose.connection.on('connected', () => { 
     console.log('MongoDB is successfully connected');//establishing connection to MongoDB Atlas
 });
