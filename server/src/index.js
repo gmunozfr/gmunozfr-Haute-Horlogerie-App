@@ -17,26 +17,28 @@ var routes = require('./routes')
 var cors =  require('./cors')//it handles the security for cross site scripting
 
 mongoose.Promise = global.Promise //this is the global namespace
-mongoose.connect('mongodb://localhost/timepieces-server', {useNewUrlParser: true });//connecting to localhost 
+mongoose.connect(process.env.MONGODB_URL)//connecting to Mongodb Atlas without exposing here the user and password against any attacker 
 mongoose.set('useFindAndModify', false)//to get rid of the warning while compiling
 mongoose.connection.on('error', (err) => { 
-    console.log('Mongodb Error: ', err); 
-    process.exit();
+    console.log('Mongodb Error: ', err) 
+    process.exit()
 });
 mongoose.connection.on('connected', () => { 
-    console.log('MongoDB is successfully connected');//establishing connection 
+    console.log('MongoDB is successfully connected');//establishing connection to MongoDB Atlas
 });
+
 
 
 
 app.use(bodyParser.urlencoded({ extended : true}))
 app.use(bodyParser.json())//here Json is going to be used
 
-// cors(app)// here the app will be called. Is the cors call where we pass the app to the cors file
-// routes(app) //passing the app to the routes
+cors(app)// here the app will be called. Is the cors call where we pass the app to the cors file
+//routes(app) //passing the app to the routes
 
 
 app.listen(port, function(err){
     console.log("The Fabulous Timepieces App is Listening on Port: " + port)
 });
+
 
