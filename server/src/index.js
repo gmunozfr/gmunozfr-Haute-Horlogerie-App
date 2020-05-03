@@ -4,12 +4,13 @@
 
 'use strict'; //this is going to force it into a strict mode
 
-require('dotenv').config() //is going to load a dotenv file
+
 var express = require('express')
 var app = express()//calling the function required from express
-var port = process.env.PORT || 3000 //defining the port that is going to be used
+var port = process.env.PORT || 3001 //defining the port that is going to be used
 var bodyParser = require ('body-parser')// is going to be used by the express server to parse the incoming body of the request
 var mongoose = require('mongoose')//being able to handle the relationship between the models and mongodb server
+require('dotenv').config() //is going to load a dotenv file
 
 var cors = require("cors")
 var http = require("http")
@@ -38,7 +39,7 @@ routes(app) //passing the app to the routes
 //
 
 app.listen(port, function(err){
-    console.log("The Fabulous Timepieces App is Listening on Port: " + port)
+    console.log("The Fabulous Haute Horlogerie API is Listening on Port: " + port)
 });
 
 
